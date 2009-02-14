@@ -39,8 +39,3 @@ solve(Values) -> Equations = get_equations(Values), Diffs = get_all_diffs(Equati
 solve([], Coefficients, _) -> Coefficients;
 solve([Equation|EqRest], KnownCoefficients, NumKnown) -> [Y|Xs] = Equation, Sum = lists:sum(lists:zipwith(fun(Co, X) -> Co*X end, KnownCoefficients, lists:sublist(Xs, NumKnown))),
 					Co = (Y - Sum) div lists:nth(NumKnown+1, Xs), solve(EqRest, lists:append(KnownCoefficients, [Co]), NumKnown+1).
-					
-
-
-% compute
-
